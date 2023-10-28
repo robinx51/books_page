@@ -1,6 +1,6 @@
-import "./App.css";
-import React, { useState, useEffect } from 'react';
-import { searchBooks, BookData } from './components/api'
+import './App.css';
+import { useState, useEffect } from 'react';
+import { searchBooks, BookData } from './components/api';
 
 function App() {
   const [query, setQuery] = useState(''); // Запрос пользователя
@@ -18,7 +18,6 @@ function App() {
   };
 
   useEffect(() => {
-    // Вызовите функцию при загрузке компонента
     handleSearch();
   }, []);
 
@@ -37,7 +36,8 @@ function App() {
             <li key={book.id}>
               <h3>{book.title}</h3>
               <p>Автор(ы): {book.authors.join(', ')}</p>
-              <p>{book.description}</p>
+              {/*<p>{book.description}</p>*/}
+              {book.coverImage && <img src={book.coverImage} alt="Обложка книги" />}
               {/* Другие данные о книге */}
             </li>
           ))}
