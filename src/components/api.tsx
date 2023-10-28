@@ -6,7 +6,7 @@ export interface BookData {
   title: string;
   authors: string[];
   description: string;
-  coverImage: string; 
+  coverImage: string;
 }
 
 export async function searchBooks(
@@ -20,7 +20,7 @@ export async function searchBooks(
         params: {
           q: query,
           key: apiKey,
-          maxResults: 5,
+          maxResults: 12,
         },
       },
     );

@@ -33,11 +33,15 @@ function App() {
       {books ? (
         <ul>
           {books.map((book) => (
-            <li key={book.id}>
-              <h3>{book.title}</h3>
-              <p>Автор(ы): {book.authors.join(', ')}</p>
+            <li className="book" key={book.id}>
+              <div className='imageCover'>
+                {book.coverImage && (<img src={book.coverImage} alt="Обложка книги" />)}
+              </div>
+              <div className="info">
+                <h3>{book.title}</h3>
+                <p>Автор(ы): {book.authors.join(', ')}</p>
+              </div>
               {/*<p>{book.description}</p>*/}
-              {book.coverImage && <img src={book.coverImage} alt="Обложка книги" />}
               {/* Другие данные о книге */}
             </li>
           ))}
