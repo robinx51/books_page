@@ -32,6 +32,7 @@ export async function searchBooks(
         authors: item.volumeInfo.authors || [],
         description: item.volumeInfo.description || '',
         coverImage: item.volumeInfo.imageLinks?.thumbnail || '',
+        publishedDate: item.volumeInfo.publishedDate,
       };
     });
 
