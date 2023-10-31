@@ -7,23 +7,28 @@ function SearchPage() {
   const [query, setQuery] = useState(''); // Запрос пользователя
   let [books, setBooks] = useState<BookData[] | null>(null);
 
-  const prevQuery = useParams<{ prevQuery?: string }>().prevQuery;
-  const count = 12;
+  let prevQuery = useParams<{ prevQuery?: string }>().prevQuery;
+  const count = 20;
 
   console.log(prevQuery);
 
-  if (prevQuery) {
-    useEffect(() => {
+  const handleSearch = async () => 
+  {
+    if (prevQuery) {
       let books;
       searchBooks(prevQuery, count).then((result) => {
         books = result;
         setBooks(books);
       });
-    }, []);
-  }
+    }
+}
+useEffect(() => {
+  handleSearch();
+}, []);
   return (
     <div>
       <div className="navigationBar">
+        <h1><Link to="/" className='link'>Главная страница</Link></h1>
         <input
           className="searchBar"
           type="text"
@@ -32,10 +37,10 @@ function SearchPage() {
           onChange={(e) => setQuery(e.target.value)}
         />
         <Link to={`/search/${query}`}>
-          <button>Поиск</button>
+          <button onClick={handleSearch}>Поиск</button>
         </Link>
-      </div>
       <h1>Результаты по запросу: {prevQuery}</h1>
+      </div>
       <div className="searchPage">
         {books ? (
           <ul>
@@ -44,7 +49,12 @@ function SearchPage() {
                 <Link to={`/book/${book.id}`}>
                   <div className="imageCover">
                     {book.coverImage && (
-                      <img src={book.coverImage} alt="Обложка книги" width="128" height="198"/>
+                      <img
+                        src={book.coverImage}
+                        alt="Обложка книги"
+                        width="128"
+                        height="198"
+                      />
                     )}
                   </div>
                 </Link>

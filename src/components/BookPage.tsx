@@ -23,18 +23,27 @@ function BookPage() {
   }
 
   return (
-    <div className="bookPage">
-      <Link to="/">Главная страница</Link>
+    <div className='bookPage'>
+      <h2><Link to="/" className='link'>Главная страница</Link></h2>
       <h2>{book[0].title}</h2>
-      <div className="imageCover">
-        {book[0].coverImage && (
-          <img src={book[0].coverImage} alt="Обложка книги" width="128" height="198"/>
-        )}
+      <div>
+        <div className="imageCover">
+          {book[0].coverImage && (
+            <img
+              src={book[0].coverImage}
+              alt="Обложка книги"
+              width="256"
+              height="396"
+            />
+          )}
+        </div>
+        <div className='bookInfo'>
+          <p>Автор(ы):{' '} {book[0].authors ? book[0].authors.join(', ') : 'Автор неизвестен'}</p>
+          <p>Описание: {book[0].description}</p>
+          <p>Количество страниц: {book[0].pageCount}</p>
+          <p>Дата публикации: {book[0].publishedDate}</p>
+        </div>
       </div>
-      <p>
-        Автор(ы): {book[0].authors ? book[0].authors.join(', ') : 'Автор неизвестен'}
-      </p>
-      <p>Описание: {book[0].description}</p>
     </div>
   );
 }

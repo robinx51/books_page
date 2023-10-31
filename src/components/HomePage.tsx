@@ -30,8 +30,8 @@ function HomePage() {
         <Link to={`/search/${query}`}>
           <button>Поиск</button>
         </Link>
+        <h1 className="">Случайные книги</h1>
       </div>
-      <h1 className="">Случайные книги</h1>
       <div className="searchPage">
         {books ? (
           <ul>
@@ -40,7 +40,12 @@ function HomePage() {
                 <Link to={`/book/${book.id}`}>
                   <div className="imageCover">
                     {book.coverImage && (
-                      <img src={book.coverImage} alt="Обложка книги" width="128" height="198"/>
+                      <img
+                        src={book.coverImage}
+                        alt="Обложка книги"
+                        width="128"
+                        height="198"
+                      />
                     )}
                   </div>
                 </Link>

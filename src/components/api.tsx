@@ -6,6 +6,8 @@ export interface BookData {
   authors: string[];
   description: string;
   coverImage: string;
+  publishedDate: string;
+  pageCount: string;
 }
 
 export async function searchBooks(
@@ -24,15 +26,16 @@ export async function searchBooks(
         },
       },
     );
-      
+
     const data: BookData[] = response.data.items.map((item: any) => {
       return {
         id: item.id,
         title: item.volumeInfo.title,
-        authors: item.volumeInfo.authors || [],
-        description: item.volumeInfo.description || '',
-        coverImage: item.volumeInfo.imageLinks?.thumbnail || '',
-        publishedDate: item.volumeInfo.publishedDate,
+        authors: item.volumeInfo.authors || ['Автор неизвестен'],
+        description: item.volumeInfo.description || 'Описание отсутствует',
+        coverImage: item.volumeInfo.imageLinks?.thumbnail || 'https://img.icons8.com/ios/100/no-image.png',
+        publishedDate: item.volumeInfo.publishedDate || 'Дата публикации неизвестна',
+        pageCount: item.volumeInfo.pageCount || ' Неизвестно',
       };
     });
 
