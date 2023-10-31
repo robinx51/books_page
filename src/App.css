@@ -29,7 +29,7 @@ h1 {
 }
 
 .navigationBar {
-  margin: 5px;
+  margin: 20px;
   width: 99%;
   position: absolute;
   top: 0;
@@ -44,17 +44,17 @@ h1 {
   position: sticky;
   background-color: aqua;
 }
-.mainPageLink:visited {
+Link:visited {
   color: red;
 }
 
 .searchPage {
-  margin: 30px;
+  margin: px;
 }
 
 .book {
   min-width: 300px;
-  height: 206px;
+  height: 208px;
   margin: 5px;
   display: inline-block;
   color: white;
@@ -67,15 +67,20 @@ h1 {
 .imageCover {
   margin: 5px;
   width: 45%;
-  height: 196px;
+  height: 198px;
   background-color: rgb(107, 123, 201);
   float: left;
+}
+
+.bookPage .imageCover {
+  width: 128px;
 }
 
 .info {
   background-color: rgb(112, 145, 184);
   margin: 5px;
   width: 45%;
+  height: 95%;
   max-width: 150px;
   position: inherit;
   float: inline-start;

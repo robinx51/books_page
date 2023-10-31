@@ -8,17 +8,14 @@ function HomePage() {
   const [books, setBooks] = useState<BookData[] | null>(null);
   const count = 20;
 
-  useEffect(() => 
-  { 
+  useEffect(() => {
     let books;
     const randQuery = 'subject:fiction';
-    searchBooks(randQuery, count) 
-    .then((result) => 
-    { 
-      books = result; 
+    searchBooks(randQuery, count).then((result) => {
+      books = result;
       setBooks(books);
     });
-  },[]);
+  }, []);
 
   return (
     <div>
@@ -43,14 +40,13 @@ function HomePage() {
                 <Link to={`/book/${book.id}`}>
                   <div className="imageCover">
                     {book.coverImage && (
-                      <img src={book.coverImage} alt="Обложка книги" />
+                      <img src={book.coverImage} alt="Обложка книги" width="128" height="198"/>
                     )}
                   </div>
                 </Link>
                 <div className="info">
                   <h3>{book.title}</h3>
                   <p>Автор(ы): {book.authors.join(', ')}</p>
-                  <p>Id: {book.id}</p>
                 </div>
               </li>
             ))}

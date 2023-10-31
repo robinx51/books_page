@@ -8,32 +8,37 @@ export interface BookData {
   coverImage: string;
 }
 
-export async function searchBooks(query: string, count: number): Promise<BookData[] | null> {
-  const apiKey = '';
+export async function searchBooks(
+  query: string,
+  count: number,
+): Promise<BookData[] | null> {
+  const apiKey = 'AIzaSyAcfQtK42M9RyF2BwKPZRbg8xvOUamLlyU';
   try {
-    const response: AxiosResponse = await axios.get('https://www.googleapis.com/books/v1/volumes', {
-      params: {
-        q: query,
-        key: apiKey,
-        maxResults: count,
+    const response: AxiosResponse = await axios.get(
+      'https://www.googleapis.com/books/v1/volumes',
+      {
+        params: {
+          q: query,
+          key: apiKey,
+          maxResults: count,
+        },
       },
+    );
+      
+    const data: BookData[] = response.data.items.map((item: any) => {
+      return {
+        id: item.id,
+        title: item.volumeInfo.title,
+        authors: item.volumeInfo.authors || [],
+        description: item.volumeInfo.description || '',
+        coverImage: item.volumeInfo.imageLinks?.thumbnail || '',
+        publishedDate: item.volumeInfo.publishedDate,
+      };
     });
-  
-      const data: BookData[] = response.data.items.map((item: any) => {
-        return {
-          id: item.id,
-          title: item.volumeInfo.title,
-          authors: item.volumeInfo.authors || [],
-          description: item.volumeInfo.description || '',
-          coverImage: item.volumeInfo.imageLinks?.thumbnail || '',
-          publishedDate: item.volumeInfo.publishedDate,
-        };
-      });
-  
-      return data;
-    } catch (error) {
-      console.error('Ошибка запроса к Google Books API:', error);
-      return null;
-    }
+
+    return data;
+  } catch (error) {
+    console.error('Ошибка запроса к Google Books API:', error);
+    return null;
   }
-  
+}

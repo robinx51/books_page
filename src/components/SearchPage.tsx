@@ -13,20 +13,16 @@ function SearchPage() {
   console.log(prevQuery);
 
   if (prevQuery) {
-  
-    useEffect(() => 
-  { 
-    let books;
-    searchBooks(prevQuery, count) 
-    .then((result) => 
-    { 
-      books = result; 
-      setBooks(books);
-    });
-  },[]);
-    }
-    return(
-      <div>
+    useEffect(() => {
+      let books;
+      searchBooks(prevQuery, count).then((result) => {
+        books = result;
+        setBooks(books);
+      });
+    }, []);
+  }
+  return (
+    <div>
       <div className="navigationBar">
         <input
           className="searchBar"
@@ -48,14 +44,13 @@ function SearchPage() {
                 <Link to={`/book/${book.id}`}>
                   <div className="imageCover">
                     {book.coverImage && (
-                      <img src={book.coverImage} alt="Обложка книги" />
+                      <img src={book.coverImage} alt="Обложка книги" width="128" height="198"/>
                     )}
                   </div>
                 </Link>
                 <div className="info">
                   <h3>{book.title}</h3>
                   <p>Автор(ы): {book.authors.join(', ')}</p>
-                  <p>Id: {book.id}</p>
                 </div>
               </li>
             ))}
@@ -65,7 +60,7 @@ function SearchPage() {
         )}
       </div>
     </div>
-    )
+  );
 }
 
 export default SearchPage;
