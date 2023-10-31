@@ -1,10 +1,64 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { searchBooks, BookData } from './api';
 
 function HomePage() {
+  const [query, setQuery] = useState(''); // Запрос пользователя
+
+  const [books, setBooks] = useState<BookData[] | null>(null);
+  const count = 20;
+
+  useEffect(() => 
+  { 
+    let books;
+    const randQuery = 'subject:fiction';
+    searchBooks(randQuery, count) 
+    .then((result) => 
+    { 
+      books = result; 
+      setBooks(books);
+    });
+  },[]);
+
   return (
     <div>
-      <h1>Главная страница</h1>
-      <Link to="/search">Перейти к поиску книг</Link>
+      <div className="navigationBar">
+        <input
+          className="searchBar"
+          type="text"
+          placeholder="Поиск книг"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <Link to={`/search/${query}`}>
+          <button>Поиск</button>
+        </Link>
+      </div>
+      <h1 className="">Случайные книги</h1>
+      <div className="searchPage">
+        {books ? (
+          <ul>
+            {books.map((book) => (
+              <li className="book" key={book.id}>
+                <Link to={`/book/${book.id}`}>
+                  <div className="imageCover">
+                    {book.coverImage && (
+                      <img src={book.coverImage} alt="Обложка книги" />
+                    )}
+                  </div>
+                </Link>
+                <div className="info">
+                  <h3>{book.title}</h3>
+                  <p>Автор(ы): {book.authors.join(', ')}</p>
+                  <p>Id: {book.id}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="noSearchResults">Нет результатов поиска.</p>
+        )}
+      </div>
     </div>
   );
 }

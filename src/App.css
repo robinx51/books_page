@@ -8,7 +8,11 @@ html {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.noSearchResults{
+h1 {
+  margin: 15px;
+}
+
+.noSearchResults {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -24,8 +28,7 @@ html {
   font-size: 16px;
 }
 
-.navigationBar{
-  background-color: brown;
+.navigationBar {
   margin: 5px;
   width: 99%;
   position: absolute;
@@ -37,15 +40,15 @@ html {
   justify-content: center;
   overflow: auto;
 }
-.mainPageLink{
-  position: sticky; 
-  background-color:aqua;
+.mainPageLink {
+  position: sticky;
+  background-color: aqua;
 }
-.mainPageLink:visited{
+.mainPageLink:visited {
   color: red;
 }
 
-.searchPage{
+.searchPage {
   margin: 30px;
 }
 

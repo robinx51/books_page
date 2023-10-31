@@ -7,15 +7,15 @@ import BookPage from './components/BookPage';
 
 function App() {
   return (
-  <Router>
-    <div>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/search" element={<SearchPage />} />
-        <Route path="/book/:bookId" element={<BookPage />} />
-      </Routes>
-    </div>
-  </Router>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/search/:prevQuery" element={<SearchPage />} />
+          <Route path="/book/:bookId" element={<BookPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
