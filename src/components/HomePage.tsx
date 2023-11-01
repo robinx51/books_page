@@ -20,21 +20,24 @@ function HomePage() {
   return (
     <div>
       <div className="navigationBar">
-        <input
-          className="searchBar"
-          type="text"
-          placeholder="Поиск книг"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <Link to={`/search/${query}`}>
-          <button>Поиск</button>
-        </Link>
-        <h1 className="">Случайные книги</h1>
+      <h2 className='mainPage'>Главная страница</h2>
+        <div className='searchBar'>
+          <input
+            className='searchInput'
+            type="text"
+            placeholder="Поиск книг"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <Link to={`/search/${query}`}>
+            <button className='searchButton'>Поиск</button>
+          </Link>
+        </div>
+      <h2 className="searchResult">Случайные книги</h2>
       </div>
-      <div className="searchPage">
+      <div className="resultPage">
         {books ? (
-          <ul>
+          <>
             {books.map((book) => (
               <li className="book" key={book.id}>
                 <Link to={`/book/${book.id}`}>
@@ -55,7 +58,7 @@ function HomePage() {
                 </div>
               </li>
             ))}
-          </ul>
+          </>
         ) : (
           <p className="noSearchResults">Нет результатов поиска.</p>
         )}

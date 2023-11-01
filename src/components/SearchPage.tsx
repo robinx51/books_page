@@ -4,46 +4,47 @@ import { Link, useParams } from 'react-router-dom';
 import { searchBooks, BookData } from './api';
 
 function SearchPage() {
-  const [query, setQuery] = useState(''); // Запрос пользователя
+  const [query, setQuery] = useState('');
   let [books, setBooks] = useState<BookData[] | null>(null);
 
   let prevQuery = useParams<{ prevQuery?: string }>().prevQuery;
   const count = 20;
 
-  console.log(prevQuery);
-
-  const handleSearch = async () => 
-  {
+  const handleSearch = async () => {
     if (prevQuery) {
+      query ? prevQuery = query : prevQuery;
+      console.log(prevQuery, query);
       let books;
       searchBooks(prevQuery, count).then((result) => {
         books = result;
         setBooks(books);
       });
     }
-}
-useEffect(() => {
-  handleSearch();
-}, []);
+  };
+  useEffect(() => {
+    handleSearch();
+  }, []);
   return (
     <div>
       <div className="navigationBar">
-        <h1><Link to="/" className='link'>Главная страница</Link></h1>
-        <input
-          className="searchBar"
-          type="text"
-          placeholder="Поиск книг"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <Link to={`/search/${query}`}>
-          <button onClick={handleSearch}>Поиск</button>
-        </Link>
-      <h1>Результаты по запросу: {prevQuery}</h1>
+        <h2 className='mainPage'><Link to="/" className="link">Главная страница</Link></h2>
+        <div className='searchBar'>
+          <input
+            className='searchInput'
+            type="text"
+            placeholder="Поиск книг"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <Link to={`/search/${query}`}>
+            <button onClick={handleSearch} className='searchButton'>Поиск</button>
+          </Link>
+        </div>
+        <h2 className='searchResult'>Результаты по запросу: {prevQuery}</h2>
       </div>
-      <div className="searchPage">
+      <div className="resultPage">
         {books ? (
-          <ul>
+          <>
             {books.map((book) => (
               <li className="book" key={book.id}>
                 <Link to={`/book/${book.id}`}>
@@ -64,7 +65,7 @@ useEffect(() => {
                 </div>
               </li>
             ))}
-          </ul>
+          </>
         ) : (
           <p className="noSearchResults">Нет результатов поиска.</p>
         )}

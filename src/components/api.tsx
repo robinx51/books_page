@@ -8,6 +8,7 @@ export interface BookData {
   coverImage: string;
   publishedDate: string;
   pageCount: string;
+  previewLink: string;
 }
 
 export async function searchBooks(
@@ -36,6 +37,7 @@ export async function searchBooks(
         coverImage: item.volumeInfo.imageLinks?.thumbnail || 'https://img.icons8.com/ios/100/no-image.png',
         publishedDate: item.volumeInfo.publishedDate || 'Дата публикации неизвестна',
         pageCount: item.volumeInfo.pageCount || ' Неизвестно',
+        previewLink: item.volumeInfo.previewLink,
       };
     });
 
