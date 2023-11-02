@@ -12,7 +12,7 @@ function SearchPage() {
 
   const handleSearch = async () => {
     if (prevQuery) {
-      query ? prevQuery = query : prevQuery;
+      query ? (prevQuery = query) : prevQuery;
       console.log(prevQuery, query);
       let books;
       searchBooks(prevQuery, count).then((result) => {
@@ -27,20 +27,26 @@ function SearchPage() {
   return (
     <div>
       <div className="navigationBar">
-        <h2 className='mainPage'><Link to="/" className="link">Главная страница</Link></h2>
-        <div className='searchBar'>
+        <h2 className="mainPage">
+          <Link to="/" className="link">
+            Главная страница
+          </Link>
+        </h2>
+        <div className="searchBar">
           <input
-            className='searchInput'
+            className="searchInput"
             type="text"
             placeholder="Поиск книг"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
           <Link to={`/search/${query}`}>
-            <button onClick={handleSearch} className='searchButton'>Поиск</button>
+            <button onClick={handleSearch} className="searchButton">
+              Поиск
+            </button>
           </Link>
         </div>
-        <h2 className='searchResult'>Результаты по запросу: {prevQuery}</h2>
+        <h2 className="searchResult">Результаты по запросу: {prevQuery}</h2>
       </div>
       <div className="resultPage">
         {books ? (

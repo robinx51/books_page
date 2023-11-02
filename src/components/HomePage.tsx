@@ -20,20 +20,20 @@ function HomePage() {
   return (
     <div>
       <div className="navigationBar">
-      <h2 className='mainPage'>Главная страница</h2>
-        <div className='searchBar'>
+        <h2 className="mainPage">Главная страница</h2>
+        <div className="searchBar">
           <input
-            className='searchInput'
+            className="searchInput"
             type="text"
             placeholder="Поиск книг"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
           <Link to={`/search/${query}`}>
-            <button className='searchButton'>Поиск</button>
+            <button className="searchButton">Поиск</button>
           </Link>
         </div>
-      <h2 className="searchResult">Случайные книги</h2>
+        <h2 className="searchResult">Случайные книги</h2>
       </div>
       <div className="resultPage">
         {books ? (

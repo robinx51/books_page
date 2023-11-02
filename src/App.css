@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 html {
@@ -8,9 +10,6 @@ html {
   font-family: Georgia, 'Times New Roman', Times, serif;
   display: flex;
   text-align: center;
-}
-h1 {
-  margin: 15px;
 }
 .noSearchResults {
   width: 100%;
@@ -30,27 +29,24 @@ h1 {
 
 .navigationBar {
   display: flex;
+  position: static;
   text-align: center;
   align-items: center;
   width: 100%;
-  background-color: #0c5da5;
-  border-style: ridge;
-  border-width: 10px;
-  border-color: #408dd2;
-  border-radius: 0.25rem;
+  background-color: #00538a;
 
-  .mainPage{
+  .mainPage {
     margin: 10px;
     display: inline-block;
     position: static;
     width: 33%;
   }
-  .searchBar{
+  .searchBar {
     margin: 10px;
     display: flex;
     position: static;
     width: 33%;
-    .searchInput{
+    .searchInput {
       display: block;
       width: 100%;
       height: calc(2.25rem + 2px);
@@ -64,9 +60,11 @@ h1 {
       background-clip: padding-box;
       border: 1px solid #bdbdbd;
       border-radius: 0.25rem;
-      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-      }
-      .searchButton{
+      transition:
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+    }
+    .searchButton {
       display: inline-block;
       font-weight: 400;
       line-height: 1.5;
@@ -79,28 +77,28 @@ h1 {
       user-select: none;
       background-color: #eee;
       border: 1px solid #bdbdbd;
-      padding: .375rem .75rem;
+      padding: 0.375rem 0.75rem;
       font-size: 1rem;
-      border-radius: .25rem;
-      transition: background-color .15s ease-in-out;
-      }
-      .searchButton:hover{
+      border-radius: 0.25rem;
+      transition: background-color 0.15s ease-in-out;
+    }
+    .searchButton:hover {
       background-color: #bdbdbd;
-      }
-      .searchInput{
+    }
+    .searchInput {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
       position: relative;
       z-index: 2;
-      }
-      .searchButton{
+    }
+    .searchButton {
       position: relative;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
       border-left-width: 0;
-      }
+    }
   }
-  .searchResult{
+  .searchResult {
     display: inline-block;
     position: static;
     width: 33%;
@@ -108,33 +106,26 @@ h1 {
   }
 }
 
-.resultPage{
+.resultPage {
   width: 100%;
   display: inline-block;
   margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: #0c5da5;
-  
-  border-style: ridge;
-  border-width: 10px;
-  border-color: #408dd2;
-  border-radius: 0.25rem;
 }
 .book {
-  width: 332px;
-  height: 238px;
-  margin: 5px;
+  width: 327px;
+  height: 233px;
+  margin: 10px;
   display: inline-block;
   vertical-align: middle;
   color: white;
   background-color: #0067a5;
-  border-style: double;
-  border-width: 15px;
+  border-style: solid;
+  border-width: 5px;
   border-color: #408dd2;
-  border-radius: 0.25rem;
+  border-radius: 2rem;
+  outline: solid 5px #0067a5;
 
   .info {
     margin: 10px 5px 0px 10px;
@@ -146,28 +137,33 @@ h1 {
 
     display: inline-block;
     text-overflow: ellipsis;
-    word-wrap: break-word; 
+    word-wrap: break-word;
     overflow: hidden;
   }
 }
 .imageCover {
-  margin: 5px;
+  margin: 13px;
+  margin-right:5px;
   width: 128px;
   height: 198px;
   float: left;
+}
+img{
+  border-radius: 10px;
+  box-shadow: 0 0 10px #444;
 }
 
 .bookPage {
   margin: 5px;
   display: inline-block;
-  .resultPage{
+  .resultPage {
     display: flex;
     padding-top: 0px;
     padding-bottom: 0px;
   }
   .imageCover {
     margin: 15px;
-    float:inherit;
+    float: inherit;
     width: 256px;
     height: 396px;
   }
