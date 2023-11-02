@@ -143,12 +143,12 @@ html {
 }
 .imageCover {
   margin: 13px;
-  margin-right:5px;
+  margin-right: 5px;
   width: 128px;
   height: 198px;
   float: left;
 }
-img{
+img {
   border-radius: 10px;
   box-shadow: 0 0 10px #444;
 }

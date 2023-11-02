@@ -7,11 +7,12 @@ function HomePage() {
 
   const [books, setBooks] = useState<BookData[] | null>(null);
   const count = 20;
+  const keywords = ['javascript', 'react', 'python', 'web development', 'programming', 'data science'];
+  const randomKeyword = keywords[Math.floor(Math.random() * keywords.length)];
 
   useEffect(() => {
     let books;
-    const randQuery = 'subject:fiction';
-    searchBooks(randQuery, count).then((result) => {
+    searchBooks(randomKeyword, count).then((result) => {
       books = result;
       setBooks(books);
     });
