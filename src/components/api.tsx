@@ -13,7 +13,6 @@ export interface BookData {
 
 export async function searchBooks(
   query: string,
-  count: number,
 ): Promise<BookData[] | null> {
   const apiKey = 'AIzaSyAcfQtK42M9RyF2BwKPZRbg8xvOUamLlyU';
 
@@ -24,9 +23,9 @@ export async function searchBooks(
         params: {
           q: query,
           key: apiKey,
-          maxResults: count,
-          printType: "books",
-          orderBy: "relevance"
+          maxResults: 40,
+          printType: 'books',
+          orderBy: 'relevance',
         },
       },
     );

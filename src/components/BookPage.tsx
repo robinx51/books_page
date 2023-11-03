@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { BookData, searchCurrentBook } from './api';
 
 function BookPage() {
   const [query, setQuery] = useState('');
-  const { bookId } = useParams();
+  const { bookId } = useParams();  
+  const navigate = useNavigate();
   let [book, setBooks] = useState<BookData | null>(null);
 
   if (bookId) {
@@ -37,22 +38,18 @@ function BookPage() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <Link to={`/search/${query}`}>
-            <button className="searchButton">Поиск</button>
-          </Link>
+          <button className="searchButton" disabled={!query} onClick={() => navigate(`/search/${query}`, { replace: false })} >Поиск</button>
         </div>
         <h2 className="searchResult">Подробная информация о книге</h2>
       </div>
       <div className="resultPage">
         <div className="imageCover">
-          {book.coverImage && (
-            <img
-              src={book.coverImage}
-              alt="Обложка книги"
-              width="256"
-              height="396"
-            />
-          )}
+          <img
+            src={book.coverImage}
+            alt="Обложка книги"
+            width="256"
+            height="396"
+          />
         </div>
         <div className="bookInfo">
           <p>Название: {book.title}</p>
