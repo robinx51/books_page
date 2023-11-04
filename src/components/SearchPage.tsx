@@ -26,9 +26,9 @@ function SearchPage() {
   useEffect(() => {
     handleSearch();
   }, []);
-  
+
   return (
-    <div className='allPage'>
+    <div className="allPage">
       <div className="navigationBar mainColor">
         <h2 className="mainPage">
           <Link to="/" className="link">

@@ -6,24 +6,17 @@ function BookPage() {
   const [query, setQuery] = useState('');
   const { bookId } = useParams();
   const navigate = useNavigate();
-  let [book, setBooks] = useState<BookData | null>(null);
+  const [book, setBooks] = useState<BookData | null>(null);
 
   if (bookId) {
     useEffect(() => {
-      let book;
       searchCurrentBook(bookId).then((result) => {
-        book = result;
-        setBooks(book);
+        setBooks(result);
       });
     }, []);
   }
-
-  if (!book) {
-    return <div className="noSearchResults">Loading...</div>;
-  }
-
   return (
-    <div className="bookPage">
+    <div className="bookPage allPage">
       <div className="navigationBar mainColor">
         <h2 className="mainPage">
           <Link to="/" className="link">
@@ -48,6 +41,7 @@ function BookPage() {
         </div>
         <h2 className="searchResult">Подробная информация о книге</h2>
       </div>
+      {book ? (
       <div className="resultPage mainColor">
         <div className="imageCover">
           <img
@@ -74,6 +68,11 @@ function BookPage() {
           </p>
         </div>
       </div>
+        ) : (
+          <div className='resultPage mainColor'>
+            <p className="noSearchResults">Загрузка...</p>
+          </div>
+        )}
     </div>
   );
 }

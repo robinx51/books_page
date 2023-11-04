@@ -1,8 +1,8 @@
-import { useState} from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BookData } from './api';
 
-export function resultPage( books : BookData[] | null)  {
+export function resultPage(books: BookData[] | null) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -32,18 +32,18 @@ export function resultPage( books : BookData[] | null)  {
   ));
 
   const pageContent = (
-      <div className='resultPage mainColor'>
-        <div className="">
+    <div className="resultPage mainColor">
+      <div className="">
         {booksToDisplay ? (
           <>
             {booksToDisplay.map((book) => (
               <div className="book secondColor" key={book.id}>
                 <Link to={`/book/${book.id}`}>
                   <div
-                    className='imageContainer'
                     data-title="Узнать подробную информацию об этой книге"
                   >
-                    <img className="imageCover"
+                    <img
+                      className="imageCover"
                       src={book.coverImage}
                       alt="Обложка книги"
                     />
@@ -59,25 +59,25 @@ export function resultPage( books : BookData[] | null)  {
         ) : (
           <p className="noSearchResults">Нет результатов поиска.</p>
         )}
-        </div>
-        <div className="pagination">
-          <button
-            className="paginationButton"
-            onClick={() => setCurrentPage(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Prev
-          </button>
-          {buttons}
-          <button
-            className="paginationButton"
-            onClick={() => setCurrentPage(currentPage + 1)}
-            disabled={currentPage === endPage}
-          >
-            Next
-          </button>
-        </div>
       </div>
+      <div className="pagination">
+        <button
+          className="paginationButton"
+          onClick={() => setCurrentPage(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          Prev
+        </button>
+        {buttons}
+        <button
+          className="paginationButton"
+          onClick={() => setCurrentPage(currentPage + 1)}
+          disabled={currentPage === endPage}
+        >
+          Next
+        </button>
+      </div>
+    </div>
   );
 
   return pageContent;
