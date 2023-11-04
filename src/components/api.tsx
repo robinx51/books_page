@@ -11,9 +11,7 @@ export interface BookData {
   previewLink: string;
 }
 
-export async function searchBooks(
-  query: string,
-): Promise<BookData[] | null> {
+export async function searchBooks(query: string): Promise<BookData[] | null> {
   const apiKey = 'AIzaSyAcfQtK42M9RyF2BwKPZRbg8xvOUamLlyU';
 
   try {

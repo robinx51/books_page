@@ -4,7 +4,7 @@ import { BookData, searchCurrentBook } from './api';
 
 function BookPage() {
   const [query, setQuery] = useState('');
-  const { bookId } = useParams();  
+  const { bookId } = useParams();
   const navigate = useNavigate();
   let [book, setBooks] = useState<BookData | null>(null);
 
@@ -24,7 +24,7 @@ function BookPage() {
 
   return (
     <div className="bookPage">
-      <div className="navigationBar">
+      <div className="navigationBar mainColor">
         <h2 className="mainPage">
           <Link to="/" className="link">
             Главная страница
@@ -38,11 +38,17 @@ function BookPage() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <button className="searchButton" disabled={!query} onClick={() => navigate(`/search/${query}`, { replace: false })} >Поиск</button>
+          <button
+            className="searchButton"
+            disabled={!query}
+            onClick={() => navigate(`/search/${query}`, { replace: false })}
+          >
+            Поиск
+          </button>
         </div>
         <h2 className="searchResult">Подробная информация о книге</h2>
       </div>
-      <div className="resultPage">
+      <div className="resultPage mainColor">
         <div className="imageCover">
           <img
             src={book.coverImage}

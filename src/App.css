@@ -1,21 +1,30 @@
-.mainColor{
-  background-color: #00538a;
+.mainColor {
+  background-color: rgba(229, 237, 241, 0.9);
+  border-radius: 50px;
 }
-.secondColor{
-  background-color: #0067a5;
+.secondColor {
+  background-color: rgba(150, 194, 219, 0.5);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 html {
-  background-color: #00538a;
-  color: white;
+  background-image: url("./components/images/background.jpg");
+  background-size: contain;
+  background-repeat: repeat;
+  background-attachment: local;
+  color: rgb(49, 49, 49);
   text-align: center;
   font-size: 10pt;
   line-height: 1;
   font-weight: 400;
-  font-family: 'Open Sans', 'Source Sans Pro', Roboto, 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', 'Myriad Pro', 'Segoe UI', Myriad, Helvetica, 'Lucida Grande', 'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', Tahoma, Geneva, Arial, sans-serif;
+  font-family: 'Open Sans', 'Source Sans Pro', Roboto, 'HelveticaNeue-Light',
+    'Helvetica Neue Light', 'Helvetica Neue', 'Myriad Pro', 'Segoe UI', Myriad,
+    Helvetica, 'Lucida Grande', 'DejaVu Sans Condensed', 'Liberation Sans',
+    'Nimbus Sans L', Tahoma, Geneva, Arial, sans-serif;
 }
 .noSearchResults {
   width: 100%;
@@ -33,6 +42,8 @@ html {
   text-align: center;
   align-items: center;
   width: 100%;
+  margin-top: 1%;
+  margin-bottom: 2%;
 
   .mainPage {
     margin: 10px;
@@ -108,10 +119,13 @@ html {
 .resultPage {
   width: 100%;
   display: inline-block;
-  position: relative;
+  position:static;
   margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .book {
   width: 327px;
@@ -121,18 +135,19 @@ html {
   vertical-align: middle;
   border-style: solid;
   border-width: 5px;
-  border-color: #408dd2;
+  border-color: rgba(150, 194, 219, 1);
   border-radius: 2rem;
-  outline: solid 5px #0067a5;
+  outline: solid 5px rgba(150, 194, 219, 0.5);
 
   .imageCover:hover img {
     transform: scale(1.06);
   }
-  .imageCover:hover::after { 
+  .imageCover:hover::after {
     content: attr(data-title);
     transition: 1s;
     position: absolute;
-    left: 110%; top: 65%;
+    left: 110%;
+    top: 65%;
     z-index: 1;
     background: rgba(182, 213, 243, 0.9);
     font-family: Arial, sans-serif;
@@ -178,8 +193,7 @@ img {
   display: inline-block;
   .resultPage {
     display: flex;
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding: 10px;
   }
   .imageCover {
     margin: 15px;
@@ -196,49 +210,42 @@ img {
 }
 
 .link:visited {
-  color: white;
+  color: black;
 }
 .link:link {
-  color: white;
-}
-.link:hover {
-}
-.link:active {
-}
-.link:focus {
+  color: black;
 }
 
-.pagination{
+.pagination {
   width: auto;
   margin: 15px;
   display: inline-block;
-  padding: 0;
-  border: 5px solid;
-}
-.paginationButton{
-  display: inline;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-  background-color: #eee;
-  border: 1px solid #bdbdbd;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;  
-  transition: background-color 0.15s ease-in-out;
-}
-.paginationButton:hover {
-  background-color: #bdbdbd;
-}
-.currentPageButton{
-  background-color: #a0a0a0;
-}
-.currentPageButton:hover{
-  background-color: #a0a0a0;
-  cursor: default;
+  .paginationButton {
+    display: inline;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: #eee;
+    border: 1px solid #bdbdbd;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    transition: background-color 0.15s ease-in-out;
+  }
+  .paginationButton:hover {
+    background-color: #bdbdbd;
+  }
+  .currentPageButton {
+    background-color: #a0a0a0;
+  }
+  .currentPageButton:hover {
+    background-color: #a0a0a0;
+    cursor: default;
+  }
+  
 }
