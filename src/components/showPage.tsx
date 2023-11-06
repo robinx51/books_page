@@ -33,19 +33,18 @@ export function resultPage(books: BookData[] | null) {
 
   const pageContent = (
     <div className="resultPage mainColor">
-      <div className="">
+      <div>
         {booksToDisplay ? (
           <>
             {booksToDisplay.map((book) => (
               <div className="book secondColor" key={book.id}>
                 <Link to={`/book/${book.id}`}>
-                  <div
-                    data-title="Узнать подробную информацию об этой книге"
-                  >
+                  <div className="imageCover" data-title="Узнать подробную информацию об этой книге">
                     <img
-                      className="imageCover"
                       src={book.coverImage}
                       alt="Обложка книги"
+                      width="128"
+                      height="198"
                     />
                   </div>
                 </Link>

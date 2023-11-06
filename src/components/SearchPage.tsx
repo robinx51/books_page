@@ -28,7 +28,7 @@ function SearchPage() {
   }, []);
 
   return (
-    <div className="allPage">
+    <div>
       <div className="navigationBar mainColor">
         <h2 className="mainPage">
           <Link to="/" className="link">

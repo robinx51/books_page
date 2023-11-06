@@ -34,11 +34,12 @@ function HomePage() {
   }, []);
 
   return (
-    <div className="allPage">
+    <div>
       <div className="navigationBar mainColor">
         <h2 className="mainPage">Главная страница</h2>
         <div className="searchBar">
           <input
+            name='searchInput'
             className="searchInput"
             type="text"
             placeholder="Поиск книг"
