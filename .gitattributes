@@ -1,6 +1,9 @@
+index.html text eol=lf
+tsconfig.json text eol=lf
+src/App.tsx text eol=lf
 src/App.css text eol=lf
 src/components/BookPage.tsx text eol=lf
 src/components/HomePage.tsx text eol=lf
 src/components/SearchPage.tsx text eol=lf
-src/components/api.tsx text eol=lf
-index.html text eol=lf
+src/components/functions/api.tsx text eol=lf
+src/components/functions/showPage.tsx text eol=lf

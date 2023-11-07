@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
-import { resultPage } from './showPage.tsx';
+import { resultPage } from './functions/showPage.tsx';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { searchBooks, BookData } from './api';
+import { searchBooks, BookData } from './functions/api.tsx';
 
 function SearchPage() {
   const [query, setQuery] = useState('');
   let prevQuery = useParams<{ prevQuery?: string }>().prevQuery;
   const navigate = useNavigate();
   let [books, setBooks] = useState<BookData[] | null>(null);
+  
   const handleSearch = async () => {
     if (query) {
       navigate(`/search/${query}`, { replace: false });
@@ -15,7 +16,6 @@ function SearchPage() {
     if (prevQuery) {
       query ? (prevQuery = query) : prevQuery;
 
-      console.log(prevQuery, query);
       let books;
       searchBooks(prevQuery).then((result) => {
         books = result;
@@ -51,9 +51,13 @@ function SearchPage() {
             Поиск
           </button>
         </div>
-        <h2 className="searchResult">Результаты по запросу: {prevQuery}</h2>
+        <h2 className='favoritesButton'><Link to='/favorites' className="link">
+          Избранное
+        </Link></h2>
       </div>
-      {resultPage(books)}
+      <div className="resultPage mainColor">
+        {resultPage(books)}
+      </div>
     </div>
   );
 }

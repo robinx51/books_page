@@ -108,7 +108,7 @@ body {
       border-left-width: 0;
     }
   }
-  .searchResult {
+  .favoritesButton {
     display: inline-block;
     position: static;
     width: 33%;
@@ -143,21 +143,6 @@ body {
   .imageCover:hover img {
     transform: scale(1.06);
   }
-  .imageCover:hover::after {
-    content: attr(data-title);
-    position: absolute;
-    left: 110%;
-    top: 65%;
-    z-index: 1;
-    background: rgba(229, 237, 241, 0.9);
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    padding: 5px 10px;
-    border: 1px solid #333;
-    color: black;
-    transition: transform 0.3s ease;
-    transition-delay: 1s;
-  }
 
   .info {
     margin: 10px 5px 0px 10px;
@@ -171,6 +156,14 @@ body {
     text-overflow: ellipsis;
     word-wrap: break-word;
     overflow: hidden;
+
+    .three-line-ellipsis {
+      overflow: hidden;
+      width: 100%;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
   }
 }
 .imageCover {

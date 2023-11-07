@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { BookData, searchCurrentBook } from './api';
+import { BookData, searchCurrentBook } from './functions/api';
 
 function BookPage() {
   const [query, setQuery] = useState('');

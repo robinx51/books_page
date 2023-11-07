@@ -1,12 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { searchBooks, BookData } from './api';
-import { resultPage } from './showPage';
+import { searchBooks, BookData } from './functions/api';
+import { resultPage, navigationBar } from './functions/showPage';
 
 function HomePage() {
-  const [query, setQuery] = useState('');
   const [books, setBooks] = useState<BookData[] | null>(null);
-  const navigate = useNavigate();
 
   function randQuery() {
     const keywords = [
@@ -35,30 +32,13 @@ function HomePage() {
 
   return (
     <div>
-      <div className="navigationBar mainColor">
-        <h2 className="mainPage">Главная страница</h2>
-        <div className="searchBar">
-          <input
-            name='searchInput'
-            className="searchInput"
-            type="text"
-            placeholder="Поиск книг"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <button
-            className="searchButton"
-            disabled={!query}
-            onClick={() => navigate(`/search/${query}`, { replace: false })}
-          >
-            Поиск
-          </button>
-        </div>
+      {navigationBar()}
+      <div className="resultPage mainColor">
         <h2 className="searchResult">
           Случайные книги по тематике программирования
         </h2>
+        {resultPage(books)}
       </div>
-      {resultPage(books)}
     </div>
   );
 }
