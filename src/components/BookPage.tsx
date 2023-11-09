@@ -8,7 +8,8 @@ import noFavoriteImage from './functions/images/no_favorite.png';
 
 function BookPage() {
   const [book, setBooks] = useState<BookData | null>(null);
-  const { isBookInFavorites, removeFromFavorites, addToFavorites } = useFavorites();
+  const { isBookInFavorites, removeFromFavorites, addToFavorites } =
+    useFavorites();
   const { bookId } = useParams();
 
   if (bookId) {
@@ -24,30 +25,41 @@ function BookPage() {
       {book ? (
         <div className="resultPage mainColor">
           <div className="imageCover">
-            <img className='image'
+            <img
+              className="image"
               src={book.coverImage}
               alt="Обложка книги"
-              width="256"
-              height="396"
+              width="192"
+              height="297"
             />
             {isBookInFavorites(book) ? (
-              <button onClick={() => removeFromFavorites(book)} className='favoritesButton removeFromFavorites'>
-                <div className='favoritesIcon'><img src={favoriteImage} height={32}/></div>
-                <div className='text'>Удалить из избранных</div>
+              <button
+                onClick={() => removeFromFavorites(book)}
+                className="favoritesButton removeFromFavorites"
+              >
+                <div className="favoritesIcon">
+                  <img src={favoriteImage} height={32} />
+                </div>
+                <div className="text">Удалить из избранных</div>
               </button>
             ) : (
-              <button onClick={() => addToFavorites(book)} className='favoritesButton addToFavorites'>
-                <div className='favoritesIcon'><img src={noFavoriteImage}/></div>
-                <div className='text'>Добавить в избранное</div>
+              <button
+                onClick={() => addToFavorites(book)}
+                className="favoritesButton addToFavorites"
+              >
+                <div className="favoritesIcon">
+                  <img src={noFavoriteImage} />
+                </div>
+                <div className="text">Добавить в избранное</div>
               </button>
             )}
           </div>
           <div className="bookInfo">
-            <p>Название: {book.title}</p>
-            <p>
+            <h3>Название: {book.title}</h3>
+            <h4>
               Автор(ы):{' '}
               {book.authors ? book.authors.join(', ') : 'Автор неизвестен'}
-            </p>
+            </h4>
             <p>Количество страниц: {book.pageCount}</p>
             <p>Дата публикации: {book.publishedDate}</p>
             <p>Описание: {book.description}</p>

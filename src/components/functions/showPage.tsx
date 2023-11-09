@@ -7,14 +7,15 @@ import noFavoriteImage from './images/no_favorite.png';
 
 export function resultPage(books: BookData[] | null) {
   const [currentPage, setCurrentPage] = useState(1);
-  const { isBookInFavorites, removeFromFavorites, addToFavorites } = useFavorites();
+  const { isBookInFavorites, removeFromFavorites, addToFavorites } =
+    useFavorites();
   const itemsPerPage = 8;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   let booksToDisplay;
   let endPage = 1;
 
-  if (books) {
+  if (books?.length) {
     booksToDisplay = books.slice(startIndex, endIndex);
     endPage = Math.ceil(books.length / itemsPerPage);
   }
@@ -23,8 +24,8 @@ export function resultPage(books: BookData[] | null) {
     <a key={index}>
       <button
         className={
-          index + 1 == currentPage ? 
-            'paginationButton currentPageButton'
+          index + 1 == currentPage
+            ? 'paginationButton currentPageButton'
             : 'paginationButton'
         }
         onClick={() => setCurrentPage(index + 1)}
@@ -46,7 +47,8 @@ export function resultPage(books: BookData[] | null) {
               <div className="book secondColor" key={book.id}>
                 <Link to={`/book/${book.id}`}>
                   <div className="imageCover" title={book.title}>
-                    <img className='image'
+                    <img
+                      className="image"
                       src={book.coverImage}
                       alt="Обложка книги"
                       width="128"
@@ -65,15 +67,25 @@ export function resultPage(books: BookData[] | null) {
                     Автор(ы): {book.authors.join(', ')}
                   </p>
                   {isBookInFavorites(book) ? (
-                    <button onClick={() => removeFromFavorites(book)} className='favoritesButton removeFromFavorites'>
-                      <div className='favoritesIcon'><img src={favoriteImage} height={32}/></div>
-                      <div className='text'>Удалить из избранных</div>
-                  </button>
-                ) : (
-                  <button onClick={() => addToFavorites(book)} className='favoritesButton addToFavorites'>
-                    <div className='favoritesIcon'><img src={noFavoriteImage}/></div>
-                    <div className='text'>Добавить в избранное</div>
-                  </button>
+                    <button
+                      onClick={() => removeFromFavorites(book)}
+                      className="favoritesButton removeFromFavorites"
+                    >
+                      <div className="favoritesIcon">
+                        <img src={favoriteImage} height={32} />
+                      </div>
+                      <div className="text">Удалить из избранных</div>
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => addToFavorites(book)}
+                      className="favoritesButton addToFavorites"
+                    >
+                      <div className="favoritesIcon">
+                        <img src={noFavoriteImage} />
+                      </div>
+                      <div className="text">Добавить в избранное</div>
+                    </button>
                   )}
                 </div>
               </div>
@@ -81,7 +93,7 @@ export function resultPage(books: BookData[] | null) {
           </>
         ) : (
           <div>
-            {currentPathname == "/favorites" ? ( 
+            {currentPathname == '/favorites' ? (
               <p className="noSearchResults">Список избранных книг пуст.</p>
             ) : (
               <p className="noSearchResults">Нет результатов поиска.</p>
@@ -134,6 +146,7 @@ export function navigationBar() {
           className="searchInput"
           type="text"
           placeholder="Поиск книг"
+          maxLength = {35}
           value={query}
           onChange={(event) => setQuery(event.target.value)}
         />

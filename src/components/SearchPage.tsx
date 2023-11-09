@@ -58,10 +58,11 @@ function SearchPage() {
         </h2>
       </div>
       <div className="resultPage mainColor">
-      <h2 className="searchResult">
-        Результаты поиска по запросу: {prevQuery}
-      </h2>
-      {resultPage(books)}</div>
+        <h2 className="searchResult">
+          Результаты поиска по запросу: {prevQuery}
+        </h2>
+        {resultPage(books)}
+      </div>
     </div>
   );
 }

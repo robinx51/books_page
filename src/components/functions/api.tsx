@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import noImageCover from './images/noImage.png'
+import noImageCover from './images/noImage.png';
 
 export interface BookData {
   id: string;
@@ -34,9 +34,7 @@ export async function searchBooks(query: string): Promise<BookData[] | null> {
         title: item.volumeInfo.title,
         authors: item.volumeInfo.authors || ['Автор неизвестен'],
         description: item.volumeInfo.description || 'Описание отсутствует',
-        coverImage:
-          item.volumeInfo.imageLinks?.thumbnail ||
-          noImageCover,
+        coverImage: item.volumeInfo.imageLinks?.thumbnail || noImageCover,
         publishedDate:
           item.volumeInfo.publishedDate || 'Дата публикации неизвестна',
         pageCount: item.volumeInfo.pageCount || ' Неизвестно',

@@ -42,7 +42,7 @@ body {
   align-items: center;
   width: 100%;
   margin-top: 1%;
-  margin-bottom: 2%;
+  margin-bottom: 1.5%;
 
   .mainPage {
     margin: 10px;
@@ -120,11 +120,11 @@ body {
   width: 100%;
   display: inline-block;
   position: static;
-  margin-top: 10px;
+  margin-top: 0px;
   margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 20px;
+  padding-top: 7px;
   padding-left: 15px;
   padding-right: 15px;
   .btn {
@@ -200,6 +200,45 @@ body {
   display: block;
 }
 
+.favoritesButton {
+  border: none;
+  display: flex;
+  position: absolute;
+  bottom: 2px;
+  width: 100%;
+  padding: 0;
+  padding-top: 0px;
+
+  background-color: #3498db;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  .favoritesIcon {
+    flex: 1;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.15);
+    margin: 0;
+    padding: 12px;
+    border-radius: 10px 0 0 10px;
+  }
+  .favoritesIcon img {
+    max-width: 25px;
+    max-height: 25px;
+    vertical-align: middle;
+  }
+  .text {
+    flex: 3;
+    text-align: center;
+    padding: 8px;
+    color: #fff;
+  }
+}
+.favoritesButton:hover {
+  background: #2980b9;
+}
+
 .bookPage {
   margin: 5px;
   .resultPage {
@@ -209,8 +248,8 @@ body {
   .imageCover {
     margin: 15px;
     float: left;
-    width: 256px;
-    height: 455px;
+    width: 192px;
+    height: 354px;
   }
   .bookInfo {
     margin: 5px 30px 15px 15px;
@@ -218,7 +257,9 @@ body {
     font-size: 16px;
     white-space: pre-wrap;
   }
-  
+  .favoritesButton {
+    font-size: 10pt;
+  }
 }
 
 .link:visited {
@@ -259,42 +300,4 @@ body {
     background-color: #a0a0a0;
     cursor: default;
   }
-}
-
-.favoritesButton {
-  border: none;
-  display: flex;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 0;
-  padding-top: 0px;
-
-  background-color: #3498db;
-  align-items: center;
-  border-radius: 10px;
-  cursor: pointer;
-
-  .favoritesIcon {
-    flex: 1;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.15);
-    margin: 0;
-    padding: 12px;
-    border-radius: 10px 0 0 10px;
-  }
-  .favoritesIcon img {
-    max-width: 25px;
-    max-height: 25px;
-    vertical-align: middle;
-  }
-  .text {
-    flex: 3;
-    text-align: center;
-    padding: 8px;
-    color: #fff;
-  }
-}
-.favoritesButton:hover {
-  background: #2980b9;
 }
