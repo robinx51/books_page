@@ -17,7 +17,7 @@ function App() {
             <Route path="/search/:prevQuery" element={<SearchPage />} />
             <Route path="/book/:bookId" element={<BookPage />} />
             <Route path="/favorites" element={<FavoritesPage />} />
-        </Routes>
+          </Routes>
         </div>
       </FavoritesProvider>
     </Router>

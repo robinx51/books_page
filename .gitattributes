@@ -5,5 +5,7 @@ src/App.css text eol=lf
 src/components/BookPage.tsx text eol=lf
 src/components/HomePage.tsx text eol=lf
 src/components/SearchPage.tsx text eol=lf
+src/components/FavoritesPage.tsx text eol=lf
 src/components/functions/api.tsx text eol=lf
 src/components/functions/showPage.tsx text eol=lf
+src/components/functions/favoritesProvider.tsx text eol=lf

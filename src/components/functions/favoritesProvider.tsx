@@ -9,7 +9,9 @@ type FavoritesContextType = {
   isBookInFavorites: (book: BookData) => boolean;
 };
 
-const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
+const FavoritesContext = createContext<FavoritesContextType | undefined>(
+  undefined,
+);
 
 export function useFavorites() {
   const context = useContext(FavoritesContext);
@@ -20,7 +22,6 @@ export function useFavorites() {
 }
 
 function FavoritesProvider({ children }: { children: React.ReactNode }) {
-
   const [favoriteBooks, setFavoriteBooks] = useState<BookData[]>([]);
   const localStorageKey = 'favoriteBooks';
 
@@ -41,7 +42,9 @@ function FavoritesProvider({ children }: { children: React.ReactNode }) {
 
   const removeFromFavorites = (book: BookData) => {
     setFavoriteBooks((prevFavorites) => {
-      const newFavorites = prevFavorites.filter((favBook) => favBook.id !== book.id);
+      const newFavorites = prevFavorites.filter(
+        (favBook) => favBook.id !== book.id,
+      );
       localStorage.setItem(localStorageKey, JSON.stringify(newFavorites));
       return newFavorites;
     });
@@ -52,10 +55,17 @@ function FavoritesProvider({ children }: { children: React.ReactNode }) {
   const isBookInFavorites = (book: BookData) => {
     return favoriteBooks.some((favBook) => favBook.id === book.id);
   };
-
+  
   return (
     <FavoritesContext.Provider
-      value={{ favoriteBooks, addToFavorites, removeFromFavorites, getFavoriteBooks, isBookInFavorites }}>
+      value={{
+        favoriteBooks,
+        addToFavorites,
+        removeFromFavorites,
+        getFavoriteBooks,
+        isBookInFavorites,
+      }}
+    >
       {children}
     </FavoritesContext.Provider>
   );

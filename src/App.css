@@ -11,7 +11,7 @@
   box-sizing: border-box;
 }
 body {
-  background-image: url('./components/images/background.jpg');
+  background-image: url('./components/functions/images/background.jpg');
   background-size: contain;
   background-repeat: repeat;
   background-attachment: local;
@@ -108,7 +108,7 @@ body {
       border-left-width: 0;
     }
   }
-  .favoritesButton {
+  .navigateToFavoritesButton {
     display: inline-block;
     position: static;
     width: 33%;
@@ -127,6 +127,23 @@ body {
   padding-top: 20px;
   padding-left: 15px;
   padding-right: 15px;
+  .btn {
+    margin: 0px 0px;
+    text-transform: uppercase;
+    font-size: 8pt;
+    padding-left: 50px;
+  }
+  .btn:before {
+    width: 40px;
+  }
+  .icon-rem:before {
+    transform: scale(0.9);
+    padding-top: 5px;
+  }
+  .icon-add:before {
+    transform: scale(0.9);
+    padding: 5px;
+  }
 }
 .book {
   width: 327px;
@@ -145,20 +162,21 @@ body {
   }
 
   .info {
-    margin: 10px 5px 0px 10px;
+    margin: 10px 10px 0px 10px;
     width: auto;
-    max-height: 198px;
-    max-width: 150px;
-    position: inherit;
+    height: 198px;
+    width: 150px;
+    position: relative;
     white-space: pre-wrap;
 
     display: inline-block;
     text-overflow: ellipsis;
     word-wrap: break-word;
-    overflow: hidden;
+    line-height: 1.25;
 
     .three-line-ellipsis {
       overflow: hidden;
+      word-wrap: break-word;
       width: 100%;
       display: -webkit-box;
       -webkit-line-clamp: 3;
@@ -174,7 +192,7 @@ body {
   float: left;
   position: relative;
 }
-img {
+.image {
   border-radius: 10px;
   box-shadow: 0 0 10px #104774;
 
@@ -184,16 +202,15 @@ img {
 
 .bookPage {
   margin: 5px;
-  display: inline-block;
   .resultPage {
     display: flex;
-    padding: 10px;
+    padding: 15px;
   }
   .imageCover {
     margin: 15px;
-    float: inherit;
+    float: left;
     width: 256px;
-    height: 396px;
+    height: 455px;
   }
   .bookInfo {
     margin: 5px 30px 15px 15px;
@@ -201,6 +218,7 @@ img {
     font-size: 16px;
     white-space: pre-wrap;
   }
+  
 }
 
 .link:visited {
@@ -241,4 +259,42 @@ img {
     background-color: #a0a0a0;
     cursor: default;
   }
+}
+
+.favoritesButton {
+  border: none;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0;
+  padding-top: 0px;
+
+  background-color: #3498db;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+
+  .favoritesIcon {
+    flex: 1;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.15);
+    margin: 0;
+    padding: 12px;
+    border-radius: 10px 0 0 10px;
+  }
+  .favoritesIcon img {
+    max-width: 25px;
+    max-height: 25px;
+    vertical-align: middle;
+  }
+  .text {
+    flex: 3;
+    text-align: center;
+    padding: 8px;
+    color: #fff;
+  }
+}
+.favoritesButton:hover {
+  background: #2980b9;
 }

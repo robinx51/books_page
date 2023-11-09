@@ -8,7 +8,7 @@ function SearchPage() {
   let prevQuery = useParams<{ prevQuery?: string }>().prevQuery;
   const navigate = useNavigate();
   let [books, setBooks] = useState<BookData[] | null>(null);
-  
+
   const handleSearch = async () => {
     if (query) {
       navigate(`/search/${query}`, { replace: false });
@@ -51,13 +51,17 @@ function SearchPage() {
             Поиск
           </button>
         </div>
-        <h2 className='favoritesButton'><Link to='/favorites' className="link">
-          Избранное
-        </Link></h2>
+        <h2 className="navigateToFavoritesButton">
+          <Link to="/favorites" className="link">
+            Избранное
+          </Link>
+        </h2>
       </div>
       <div className="resultPage mainColor">
-        {resultPage(books)}
-      </div>
+      <h2 className="searchResult">
+        Результаты поиска по запросу: {prevQuery}
+      </h2>
+      {resultPage(books)}</div>
     </div>
   );
 }

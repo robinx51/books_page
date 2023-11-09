@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { BookData, searchCurrentBook } from './functions/api';
+import { navigationBar } from './functions/showPage';
+import { useFavorites } from './functions/favoritesProvider';
+import favoriteImage from './functions/images/favorite.png';
+import noFavoriteImage from './functions/images/no_favorite.png';
 
 function BookPage() {
-  const [query, setQuery] = useState('');
-  const { bookId } = useParams();
-  const navigate = useNavigate();
   const [book, setBooks] = useState<BookData | null>(null);
+  const { isBookInFavorites, removeFromFavorites, addToFavorites } = useFavorites();
+  const { bookId } = useParams();
 
   if (bookId) {
     useEffect(() => {
@@ -16,40 +19,28 @@ function BookPage() {
     }, []);
   }
   return (
-    <div className="bookPage allPage">
-      <div className="navigationBar mainColor">
-        <h2 className="mainPage">
-          <Link to="/" className="link">
-            Главная страница
-          </Link>
-        </h2>
-        <div className="searchBar">
-          <input
-            className="searchInput"
-            type="text"
-            placeholder="Поиск книг"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <button
-            className="searchButton"
-            disabled={!query}
-            onClick={() => navigate(`/search/${query}`, { replace: false })}
-          >
-            Поиск
-          </button>
-        </div>
-        <h2 className="searchResult">Подробная информация о книге</h2>
-      </div>
+    <div className="bookPage">
+      {navigationBar()}
       {book ? (
         <div className="resultPage mainColor">
           <div className="imageCover">
-            <img
+            <img className='image'
               src={book.coverImage}
               alt="Обложка книги"
               width="256"
               height="396"
             />
+            {isBookInFavorites(book) ? (
+              <button onClick={() => removeFromFavorites(book)} className='favoritesButton removeFromFavorites'>
+                <div className='favoritesIcon'><img src={favoriteImage} height={32}/></div>
+                <div className='text'>Удалить из избранных</div>
+              </button>
+            ) : (
+              <button onClick={() => addToFavorites(book)} className='favoritesButton addToFavorites'>
+                <div className='favoritesIcon'><img src={noFavoriteImage}/></div>
+                <div className='text'>Добавить в избранное</div>
+              </button>
+            )}
           </div>
           <div className="bookInfo">
             <p>Название: {book.title}</p>

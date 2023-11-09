@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+import noImageCover from './images/noImage.png'
 
 export interface BookData {
   id: string;
@@ -35,7 +36,7 @@ export async function searchBooks(query: string): Promise<BookData[] | null> {
         description: item.volumeInfo.description || 'Описание отсутствует',
         coverImage:
           item.volumeInfo.imageLinks?.thumbnail ||
-          'https://img.icons8.com/ios/100/no-image.png',
+          noImageCover,
         publishedDate:
           item.volumeInfo.publishedDate || 'Дата публикации неизвестна',
         pageCount: item.volumeInfo.pageCount || ' Неизвестно',
