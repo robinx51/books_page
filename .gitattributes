@@ -1,5 +1,10 @@
 index.html text eol=lf
 tsconfig.json text eol=lf
+babel.config.cjs text eol=lf
+jest.config.cjs text eol=lf
+package-lock.json text eol=lf
+package.json text eol=lf
+vite.config.ts text eol=lf
 src/App.tsx text eol=lf
 src/App.css text eol=lf
 src/components/BookPage.tsx text eol=lf

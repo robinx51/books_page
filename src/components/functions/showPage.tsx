@@ -18,7 +18,7 @@ export function resultPage(books: BookData[] | null) {
   if (books?.length) {
     booksToDisplay = books.slice(startIndex, endIndex);
     endPage = Math.ceil(books.length / itemsPerPage);
-    (currentPage > endPage) ? (setCurrentPage(endPage)) : currentPage;
+    currentPage > endPage ? setCurrentPage(endPage) : currentPage;
   }
   const buttons = Array.from({ length: endPage }, (_, index) => (
     <a key={index}>
@@ -154,6 +154,7 @@ export function navigationBar() {
           className="searchButton"
           disabled={!query}
           onClick={() => navigate(`/search/${query}`, { replace: false })}
+          data-testid="search-button"
         >
           Поиск
         </button>

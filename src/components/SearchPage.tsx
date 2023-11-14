@@ -47,6 +47,7 @@ function SearchPage() {
             className="searchButton"
             disabled={!query}
             onClick={handleSearch}
+            data-testid="search-button"
           >
             Поиск
           </button>

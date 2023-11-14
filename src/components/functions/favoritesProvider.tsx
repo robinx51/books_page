@@ -52,7 +52,7 @@ function FavoritesProvider({ children }: { children: React.ReactNode }) {
 
   const getFavoriteBooks = () => {
     return favoriteBooks.length == 0 ? [] : favoriteBooks;
-  }
+  };
 
   const isBookInFavorites = (book: BookData) => {
     return favoriteBooks.some((favBook) => favBook.id === book.id);
