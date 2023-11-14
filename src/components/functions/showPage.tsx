@@ -6,20 +6,20 @@ import favoriteImage from './images/favorite.png';
 import noFavoriteImage from './images/no_favorite.png';
 
 export function resultPage(books: BookData[] | null) {
-  const [currentPage, setCurrentPage] = useState(1);
   const { isBookInFavorites, removeFromFavorites, addToFavorites } =
     useFavorites();
+
+  let [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   let booksToDisplay;
   let endPage = 1;
-
   if (books?.length) {
     booksToDisplay = books.slice(startIndex, endIndex);
     endPage = Math.ceil(books.length / itemsPerPage);
+    (currentPage > endPage) ? (setCurrentPage(endPage)) : currentPage;
   }
-
   const buttons = Array.from({ length: endPage }, (_, index) => (
     <a key={index}>
       <button
@@ -111,7 +111,7 @@ export function resultPage(books: BookData[] | null) {
         </button>
         {buttons}
         <button
-          className="paginationButton"
+          className="paginationButton next"
           onClick={() => setCurrentPage(currentPage + 1)}
           disabled={currentPage == endPage}
         >
@@ -145,8 +145,8 @@ export function navigationBar() {
           name="searchInput"
           className="searchInput"
           type="text"
-          placeholder="Поиск книг"
-          maxLength = {35}
+          placeholder="Введите запрос"
+          maxLength={35}
           value={query}
           onChange={(event) => setQuery(event.target.value)}
         />
