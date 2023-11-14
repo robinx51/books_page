@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
-import SearchPage from '../components/SearchPage'; // Подставьте свой путь к компоненте
 import { BrowserRouter } from 'react-router-dom';
 import FavoritesProvider from '../components/functions/favoritesProvider';
+import SearchPage from '../components/SearchPage';
 
 test('пользователь может ввести запрос и выполнить поиск', () => {
     render(<FavoritesProvider>
